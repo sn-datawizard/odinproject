@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 35px;
+}
+
+button {
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+
+.content-container {
+    border-style: solid;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    width: 25em;
+    height: 25em;
+}
+
+.rowGrid {
+    border-style: solid;
+    border-width: thin;
+}
