@@ -1,5 +1,5 @@
 function main() {
-    var num = prompt('Choose grid size: 100, 400, 900, 1600 or 2500');
+    var num = validateGridSize();
     
     createGrid(num);
     
@@ -16,6 +16,17 @@ function resetGrid(n) {
     }
     
     console.log('test');
+}
+
+function validateGridSize() {
+    var validSizes = [100, 400, 900, 1600, 2500];
+    
+    var numPrompt = parseInt(prompt('Choose grid size: 100, 400, 900, 1600, or 2500'));
+
+    while (!validSizes.includes(numPrompt)) {
+        numPrompt = parseInt(prompt('Invalid size! Choose grid size: 100, 400, 900, 1600, or 2500'));
+    }
+    return numPrompt
 }
 
 
