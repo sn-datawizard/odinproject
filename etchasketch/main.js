@@ -1,5 +1,5 @@
 function main() {
-    var num = 100;
+    var num = prompt('Enter grid size');
     
     createGrid(num);
     
@@ -42,9 +42,11 @@ function createGrid(n) {
 }
 
 function changeGridColor(id) {
-    
+    var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
     var rowUnique = document.getElementById(id);
-    rowUnique.style.backgroundColor = '#000000';
+    rowUnique.style.backgroundColor = randomColor;
+    
+    //rowUnique.style.backgroundColor = '#000000';
 }
 
 function genRandonString(length) {
