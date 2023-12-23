@@ -1,5 +1,5 @@
 function main() {
-    var num = prompt('Enter grid size');
+    var num = prompt('Choose grid size: 100, 400, 900, 1600 or 2500');
     
     createGrid(num);
     
@@ -20,8 +20,13 @@ function resetGrid(n) {
 
 
 function createGrid(n) {
-    grid_size = n
+    grid_size = n;
+
     var parent = document.getElementsByClassName('content-container')[0];
+    
+    var r = Math.sqrt(n);
+    parent.style.gridTemplateColumns = `repeat(${r}, 1fr)`;
+    parent.style.gridTemplateRows = `repeat(${r}, 1fr)`;
 
     for (let i = 0; i < n; i++) {
         var grid = document.createElement('div');

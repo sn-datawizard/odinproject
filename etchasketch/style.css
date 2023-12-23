@@ -36,8 +36,8 @@ button {
 .content-container {
     border-style: solid;
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    /* grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr); */
     width: 25em;
     height: 25em;
 }
