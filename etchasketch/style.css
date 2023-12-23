@@ -23,14 +23,32 @@ img {
     margin: 35px;
 }
 
-button {
+.reset-button {
     padding: 10px;
+    margin-top: 10px;
+}
+
+.grid-button {
+    padding: 15px;
+    margin: 10px;
+}
+
+.grid-button-header {
+    display: flex;
+    justify-content: center;
+    margin: 35px;
+}
+
+.grid-button-items {
+    display: flex;
+    justify-content: center;
+    margin: 35px;
 }
 
 .container {
     display: flex;
     justify-content: center;
-    margin: 100px;
+    margin: 10px;
 }
 
 .content-container {

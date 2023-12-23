@@ -1,6 +1,8 @@
 function main() {
-    var num = validateGridSize();
-    
+    //var num = validateGridSize();
+    //var num = 900;
+
+    var num = chooseGridSize();
     createGrid(num);
     
     var resetButton = document.getElementById('reset-grid');
@@ -9,24 +11,17 @@ function main() {
     
 }
 
+
+function chooseGridSize() {
+    return 900
+}
+
+
 function resetGrid(n) {
     for (let i = 0; i < n; i++) {
     var singleRow = document.getElementsByClassName('rowGrid')[i];
     singleRow.style.backgroundColor = '#ffffff';
     }
-    
-    console.log('test');
-}
-
-function validateGridSize() {
-    var validSizes = [100, 400, 900, 1600, 2500];
-    
-    var numPrompt = parseInt(prompt('Choose grid size: 100, 400, 900, 1600, or 2500'));
-
-    while (!validSizes.includes(numPrompt)) {
-        numPrompt = parseInt(prompt('Invalid size! Choose grid size: 100, 400, 900, 1600, or 2500'));
-    }
-    return numPrompt
 }
 
 
@@ -57,6 +52,7 @@ function createGrid(n) {
       }
 }
 
+
 function changeGridColor(id) {
     var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
     var rowUnique = document.getElementById(id);
@@ -64,6 +60,7 @@ function changeGridColor(id) {
     
     //rowUnique.style.backgroundColor = '#000000';
 }
+
 
 function genRandonString(length) {
     var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
@@ -77,5 +74,21 @@ function genRandonString(length) {
 
 main();
 
+
+////////////////////////
+// Functions Archive //
+//////////////////////
+
+
+// function validateGridSize() {
+//     var validSizes = [100, 400, 900, 1600, 2500];
+    
+//     var numPrompt = parseInt(prompt('Choose grid size: 100, 400, 900, 1600, or 2500'));
+
+//     while (!validSizes.includes(numPrompt)) {
+//         numPrompt = parseInt(prompt('Invalid size! Choose grid size: 100, 400, 900, 1600, or 2500'));
+//     }
+//     return numPrompt
+// }
 
 
