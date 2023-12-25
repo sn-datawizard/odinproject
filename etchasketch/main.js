@@ -1,5 +1,8 @@
 function main() {
     addElToGridButton();
+    
+    body = document.getElementsByTagName('body');
+    body.click;
 
 }
 
@@ -64,7 +67,7 @@ function createGrid(n) {
         var rowID = grid.getAttribute('id');
 
         (function(id) {
-            grid.addEventListener('mouseover', function() {
+            grid.addEventListener('mouseenter', function() {
                 changeGridColor(id);
             });
         })(rowID);
@@ -93,10 +96,17 @@ function resetGrid(n) {
 function changeGridColor(id) {
     var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
     var rowUnique = document.getElementById(id);
-    //rowUnique.style.backgroundColor = randomColor; 
-    rowUnique.style.backgroundColor = '#000000';
+    rowUnique.style.backgroundColor = randomColor; 
+    //rowUnique.style.backgroundColor = '#000000';
 }
 
+
+// function changeGridColor(id) {
+//     var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+//     var rowUnique = document.getElementById(id);
+//     rowUnique.style.backgroundColor = randomColor; 
+//     //rowUnique.style.backgroundColor = '#000000';
+// }
 
 function genRandonString(length) {
     var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
