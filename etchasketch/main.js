@@ -1,8 +1,9 @@
 function main() {
     addElToGridButton();
     
-    body = document.getElementsByTagName('body');
-    body.click;
+    // ToDo
+    //body = document.getElementsByTagName('body');
+    //body.click;
 
 }
 
