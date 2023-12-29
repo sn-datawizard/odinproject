@@ -1,58 +1,55 @@
-var inputArray = [];
-var inputArrayOperator = [];
+var UserInputArray = [];
 
 function main() {
+    addEvent();
+}
+
+function addEvent() {
+    var digitButtons = document.getElementsByClassName('digit');
     
-}
-
-function getInputDigit(i) {
-    var input = i;
-    inputArray.push(input);
-    if (inputArray.length > 1) {
-        inputArray = inputArray.join('');
-        inputArray = [inputArray];
+    for(let i = 0; i < digitButtons.length; i++) {
+        digitButtons[i].addEventListener('click', function() {collectUserInput.call(this)});
     }
-    console.log(inputArray);
-}
 
-function getInputOperator(i) {
-    var input = i;
-    inputArrayOperator.push(input);
-    console.log(inputArrayOperator);
-}
-
-function operate(value1, value2, operator) {
-    var op = operator;
-    var result;
-    if (op == '+') {
-        result = add(value1, value2);
-    } else if (op == '-') {
-        result = subtract(value1, value2);
-    } else if (op == '*') {
-        result = multiply(value1, value2);
-    } else {
-        result = divide(value1, value2);
+    var digitButtons = document.getElementsByClassName('operator');
+    
+    for(let i = 0; i < digitButtons.length; i++) {
+        digitButtons[i].addEventListener('click', function() {collectUserInput.call(this)});
     }
-    return result
 }
 
-function add(val1, val2) {
-    var operation = val1 + val2;
-    return operation
+function collectUserInput() {
+    var clicked = this.textContent;
+    UserInputArray.push(clicked);
+    console.log(clicked);
+    console.log(UserInputArray);
 }
 
-function subtract(val1, val2) {
-    var operation = val1 - val2;
-    return operation
+function collectInput() {
+    var inputDigit = [5, 6];
+    var inputOp = '+';
+    return {
+        'values': inputDigit,
+        'operator': inputOp
+    };
 }
 
-function multiply(val1, val2) {
-    var operation = val1 * val2;
-    return operation
-}
-
-function divide(val1, val2) {
-    var operation = val1 / val2;
+function operate(values, operator) {
+    var operation = values.reduce(function (accumulator, currentValue) {
+        switch (operator) {
+            case '+':
+                return accumulator + currentValue;
+            case '-':
+                return accumulator - currentValue;
+            case '*':
+                return accumulator * currentValue;
+            case '/':
+                if (currentValue === 0) {
+                    throw new Error('Cannot divide by zero.');
+                }
+                return accumulator / currentValue;
+        }
+    });
     return operation
 }
 
