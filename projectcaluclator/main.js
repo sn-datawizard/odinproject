@@ -1,36 +1,45 @@
 var userInputArray = [];
-var indexOperatorArray = [];
+//var indexOperatorArray = [];
 
+var tempValArray = [];
 var valArray = [];
 var opArray = [];
 
+var resultOperate;
+
 function main() {
     processInput();
+    console.log(resultOperate);
 }
 
 function processInput() {
     addEvent();
-    //console.log(userInputArray);
-    //console.log(indexOperatorArray);
 
     var resultButton = document.getElementsByClassName('result')[0];
     resultButton.addEventListener('click', function() {defineArrays()});
 }
 
 function defineArrays() {
-    var operatorArray = ['+', '-', '*', '/', 'x'];
+    var operatorArray = ['+', '-', '*', '/', '='];
     
     for(let i = 0; i < userInputArray.length; i++) {
         var currentElement = userInputArray[i];
         if (operatorArray.includes(currentElement)) {
-            indexOperatorArray.push(i);
+            //indexOperatorArray.push(i);
             opArray.push(currentElement);
+            valArray.push(parseInt(tempValArray.join('')));
+            tempValArray = [];
+            if (currentElement === '=') {
+                opArray.pop()
+                console.log(operate(valArray, opArray[0]));
+                resultOperate = operate(valArray, opArray[0]);
+                document.getElementsByClassName('display-result')[0].textContent = resultOperate;
+                //return operate(valArray, opArray[0]);
+            }
         } else {
-            valArray.push(currentElement);
+            tempValArray.push(parseInt(currentElement));
         }
     }
-    console.log(opArray);
-    console.log(valArray);
 }
 
 function addEvent() {
@@ -41,6 +50,12 @@ function addEvent() {
     }
 
     var digitButtons = document.getElementsByClassName('operator');
+    
+    for(let i = 0; i < digitButtons.length; i++) {
+        digitButtons[i].addEventListener('click', function() {collectUserInput.call(this)});
+    }
+
+    var digitButtons = document.getElementsByClassName('result');
     
     for(let i = 0; i < digitButtons.length; i++) {
         digitButtons[i].addEventListener('click', function() {collectUserInput.call(this)});
@@ -72,7 +87,6 @@ function operate(values, operator) {
 }
 
 main();
-
 
 /////////////////////////
 // Functions Archive ///
