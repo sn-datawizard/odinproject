@@ -24,11 +24,20 @@ function addEvent() {
     for(let i = 0; i < operateButtons.length; i++) {
         operateButtons[i].addEventListener('click', function() {collectUserInput.call(this)});
     }
+
+    var allClearButton = document.getElementsByClassName('clear')[0];
+    allClearButton.addEventListener('click', function() {deleteUserInput()});
 }
 
 function collectUserInput() {
     var clicked = this.textContent;
     userInputArray.push(clicked);
+    document.getElementsByClassName('display-result')[0].textContent = userInputArray.join('');
+}
+
+function deleteUserInput() {
+    userInputArray = [];
+    document.getElementsByClassName('display-result')[0].textContent = 0;
 }
 
 function calculateResult(expressionArray) {
