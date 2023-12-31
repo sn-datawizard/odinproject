@@ -1,45 +1,15 @@
 var userInputArray = [];
-//var indexOperatorArray = [];
 
-var tempValArray = [];
-var valArray = [];
-var opArray = [];
-
-var resultOperate;
 
 function main() {
     processInput();
-    console.log(resultOperate);
 }
 
 function processInput() {
     addEvent();
 
     var resultButton = document.getElementsByClassName('result')[0];
-    resultButton.addEventListener('click', function() {defineArrays()});
-}
-
-function defineArrays() {
-    var operatorArray = ['+', '-', '*', '/', '='];
-    
-    for(let i = 0; i < userInputArray.length; i++) {
-        var currentElement = userInputArray[i];
-        if (operatorArray.includes(currentElement)) {
-            //indexOperatorArray.push(i);
-            opArray.push(currentElement);
-            valArray.push(parseInt(tempValArray.join('')));
-            tempValArray = [];
-            if (currentElement === '=') {
-                opArray.pop()
-                console.log(operate(valArray, opArray[0]));
-                resultOperate = operate(valArray, opArray[0]);
-                document.getElementsByClassName('display-result')[0].textContent = resultOperate;
-                //return operate(valArray, opArray[0]);
-            }
-        } else {
-            tempValArray.push(parseInt(currentElement));
-        }
-    }
+    resultButton.addEventListener('click', function() {calculateResult(userInputArray)});
 }
 
 function addEvent() {
@@ -49,16 +19,10 @@ function addEvent() {
         digitButtons[i].addEventListener('click', function() {collectUserInput.call(this)});
     }
 
-    var digitButtons = document.getElementsByClassName('operator');
+    var operateButtons = document.getElementsByClassName('operator');
     
-    for(let i = 0; i < digitButtons.length; i++) {
-        digitButtons[i].addEventListener('click', function() {collectUserInput.call(this)});
-    }
-
-    var digitButtons = document.getElementsByClassName('result');
-    
-    for(let i = 0; i < digitButtons.length; i++) {
-        digitButtons[i].addEventListener('click', function() {collectUserInput.call(this)});
+    for(let i = 0; i < operateButtons.length; i++) {
+        operateButtons[i].addEventListener('click', function() {collectUserInput.call(this)});
     }
 }
 
@@ -67,23 +31,20 @@ function collectUserInput() {
     userInputArray.push(clicked);
 }
 
-function operate(values, operator) {
-    var operation = values.reduce(function (accumulator, currentValue) {
-        switch (operator) {
-            case '+':
-                return accumulator + currentValue;
-            case '-':
-                return accumulator - currentValue;
-            case '*':
-                return accumulator * currentValue;
-            case '/':
-                if (currentValue === 0) {
-                    throw new Error('Cannot divide by zero.');
-                }
-                return accumulator / currentValue;
-        }
-    });
-    return operation
+function calculateResult(expressionArray) {
+    var expressionString = expressionArray.join('');
+    console.log(expressionString);
+
+    try {
+        var result = eval(expressionString);
+        document.getElementsByClassName('display-result')[0].textContent = result;
+        console.log(result);
+
+    } catch (error) {
+        console.error('Error in calculation:', error);
+        console.log('Error');
+        return 'Error';
+    }
 }
 
 main();
@@ -91,36 +52,6 @@ main();
 /////////////////////////
 // Functions Archive ///
 ///////////////////////
-
-// function showResult() {
-//     var operatorArray = ['+', '-', '*', '/'];
-    
-//     for(let i = 0; i < userInputArray.length; i++) {
-//         var currentElement = userInputArray[i]
-
-//         for(let i = 0; i < operatorArray.length; i++) {
-//             if (currentElement.includes(operatorArray[i]) === true) {
-//                 var op = currentElement;
-                
-//                 var index = userInputArray.indexOf(currentElement);
-                
-//                 var currentNumber = userInputArray.slice(0, index);
-//                 console.log(currentNumber.join(''));
-//                 console.log(op);
-//                 // ToDo Implement logic to get values array and operator array for operate() function
-//             }
-//         }
-//     }
-// }
-
-// function defineArrays() {
-//     // ToDo Select numbers based on indexOperatorArray for operate() function
-//     // Need dynamic creation of arrays based on lenght operator array
-//     console.log(userInputArray.slice(0, indexOperatorArray[0]).join(''));
-//     console.log(userInputArray.slice(indexOperatorArray[0]+1, indexOperatorArray[1]).join(''));
-//     console.log(userInputArray.slice(indexOperatorArray[1]+1, indexOperatorArray[2]).join(''));
-//     console.log(userInputArray.slice(indexOperatorArray[2]+1, userInputArray.length.max).join(''));
-// }
 
 // function getIndexOperator() {
 //     var operatorArray = ['+', '-', '*', '/', 'x'];
@@ -131,4 +62,48 @@ main();
 //             indexOperatorArray.push(i);
 //         }
 //     }
+// }
+
+// function defineArrays() {
+//     var operatorArray = ['+', '-', '*', '/', '='];
+    
+//     for(let i = 0; i < userInputArray.length; i++) {
+//         var currentElement = userInputArray[i];
+//         if (operatorArray.includes(currentElement)) {
+//             //indexOperatorArray.push(i);
+//             opArray.push(currentElement);
+//             valArray.push(parseInt(tempValArray.join('')));
+//             tempValArray = []; // 35 + 3 +
+            
+
+//             // if (currentElement === '=') {
+//             //     opArray.pop()
+//             //     console.log(operate(valArray, opArray[0]));
+//             //     resultOperate = operate(valArray, opArray[0]);
+//             //     document.getElementsByClassName('display-result')[0].textContent = resultOperate;
+//             // }
+//         } else {
+//             tempValArray.push(parseInt(currentElement));
+//         }
+//     }
+//     console.log(opArray);
+// }
+
+// function operate(values, operator) {
+//     var operation = values.reduce(function (accumulator, currentValue) {
+//         switch (operator) {
+//             case '+':
+//                 return accumulator + currentValue;
+//             case '-':
+//                 return accumulator - currentValue;
+//             case '*':
+//                 return accumulator * currentValue;
+//             case '/':
+//                 if (currentValue === 0) {
+//                     throw new Error('Cannot divide by zero.');
+//                 }
+//                 return accumulator / currentValue;
+//         }
+//     });
+//     return operation
 // }
