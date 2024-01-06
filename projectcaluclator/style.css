@@ -31,10 +31,10 @@ img {
 
 .button-container {
     display: grid;
-    /* grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr); */
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    /* grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
 }
 
 .button-wrapper {
@@ -46,16 +46,40 @@ img {
     grid-column: span 2;
 }
 
+.button-wrapper-ac {
+    margin: 10px;
+    grid-column: span 2;
+}
+
 button {
     padding: 20px;
 }
 
 .result {
     background-color: orange;
-    padding-left: 70%;
+    padding-left: 75%;
     font-size: medium;
+    border: None;
+}
+
+.clear {
+    background-color: lightgrey;
+    padding-left: 70%;
+    border: None;
 }
 
 .operator {
-    background-color: wheat;
+    background-color: lightyellow
+}
+
+.result:hover {
+    background-color: lightcoral;
+}
+
+.clear:hover {
+    background-color: grey;
+}
+
+.operator:hover {
+    background-color: rgb(255, 240, 224);
 }

@@ -25,8 +25,14 @@ function addEvent() {
         operateButtons[i].addEventListener('click', function() {collectUserInput.call(this)});
     }
 
+    var floatButton = document.getElementsByClassName('float')[0];
+    floatButton.addEventListener('click', function() {collectUserInput.call(this)});
+
     var allClearButton = document.getElementsByClassName('clear')[0];
     allClearButton.addEventListener('click', function() {deleteUserInput()});
+
+    var lastClearButton = document.getElementsByClassName('clear-last')[0];
+    lastClearButton.addEventListener('click', function() {deleteLastUserInput()});
 }
 
 function collectUserInput() {
@@ -38,6 +44,11 @@ function collectUserInput() {
 function deleteUserInput() {
     userInputArray = [];
     document.getElementsByClassName('display-result')[0].textContent = 0;
+}
+
+function deleteLastUserInput() {
+    userInputArray.splice(-1);
+    document.getElementsByClassName('display-result')[0].textContent = userInputArray.join('');
 }
 
 function calculateResult(expressionArray) {
