@@ -31,12 +31,19 @@ img {
 
 .button-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    /* grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr); */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .button-wrapper {
     margin: 10px;
+}
+
+.button-wrapper-result {
+    margin: 10px;
+    grid-column: span 2;
 }
 
 button {
@@ -45,6 +52,8 @@ button {
 
 .result {
     background-color: orange;
+    padding-left: 70%;
+    font-size: medium;
 }
 
 .operator {
