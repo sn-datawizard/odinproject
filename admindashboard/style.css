@@ -1,0 +1,40 @@
+/* * {
+    margin: 0;
+    padding: 0;
+} */
+
+/* .footer {
+    display: flex;
+    justify-content: flex-end;
+} */
+
+img {
+    height: 35px;
+    width: 35px;
+}
+
+a {
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: x-large;
+    color: #ffffff !important;
+}
+
+#navigation {
+    background-color: rgb(0, 174, 255);
+}
+
+#profile-icon-sm {
+    height: 55px;
+    width: 65px;
+}
+
+#profile-icon-lg {
+    height: 75px;
+    width: 85px;
+}
+
+.nav-item {
+    margin-top: 50px;
+}
+
