@@ -34,6 +34,12 @@ a {
     width: 85px;
 }
 
+.trending-icon-sm {
+    height: 55px;
+    width: 65px;
+}
+
+
 .nav-item {
     margin-top: 50px;
 }
