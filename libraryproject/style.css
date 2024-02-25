@@ -1,0 +1,30 @@
+.form-container {
+    margin: 20px;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    padding: 10px;
+}
+
+label {
+    padding: 5px;
+    padding-left: 50px;
+}
+
+.button-container {
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.button-add {
+    padding: 25px;
+}
+
+.table-container {
+    display: flex;
+    justify-content: start;
+}
