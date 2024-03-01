@@ -15,7 +15,6 @@ function addBook() {
     var releaseYearInput = document.getElementById('year');
     
     myLibrary.push({author: authorInput.value, title: titleInput.value, releaseYear: releaseYearInput.value});
-    console.log(myLibrary);
     displayBook();
     reset(authorInput, titleInput, releaseYearInput);
 }
@@ -23,7 +22,10 @@ function addBook() {
 function displayBook(){
     if (myLibrary[0].author != '') {
         var rowsContainer = document.getElementsByClassName('rows')[0];
+        
+        randomId = genRandom(10);
         var row = rowsContainer.appendChild(document.createElement('tr'));
+        row.setAttribute('id', randomId);
     
         var authorCell = row.appendChild(document.createElement('td'));
         authorCell.textContent = myLibrary[0].author;
@@ -33,6 +35,13 @@ function displayBook(){
     
         var releaseYearCell = row.appendChild(document.createElement('td'));
         releaseYearCell.textContent = myLibrary[0].releaseYear;
+
+        var deleteButtonCell = row.appendChild(document.createElement('td')).appendChild(document.createElement('button'));
+        deleteButtonCell.className = 'delete-button';
+        deleteButtonCell.textContent = 'Delete';
+
+        deleteButtonCell.addEventListener('click', function() {deleteRow(row.getAttribute('id'))});
+        console.log(row.getAttribute('id'));
     }
 }
 
@@ -42,6 +51,22 @@ function reset(author, title, releaseYear) {
     author.value = '';
     title.value = '';
     releaseYear.value = '';
+}
+
+function deleteRow(id) {
+    rowToDelete = document.getElementById(id);
+    console.log(id);
+    rowToDelete.remove();
+}
+
+function genRandom(length) {
+    var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
+    var charLength = chars.length;
+    var result = '';
+    for ( var i = 0; i < length; i++ ) {
+       result += chars.charAt(Math.floor(Math.random() * charLength));
+    }
+    return result;
 }
 
 main();
