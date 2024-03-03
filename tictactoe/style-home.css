@@ -1,0 +1,24 @@
+.home-header {
+    margin: 50px;
+}
+
+.home-header-text {
+    font-weight: bold;
+    margin-bottom: 15px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-header-button {
+    font-weight: bold;
+    margin-bottom: 15px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+

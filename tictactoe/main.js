@@ -23,7 +23,11 @@ function makePlayerMove(id) {
     } else {
         boxPlay.textContent = 'X';
         makeComputerMove();
+        checkVictory();
     }
+
+    // makeComputerMove();
+    // checkVictory();
 
 }
 
@@ -42,8 +46,38 @@ function makeComputerMove() {
     }
 }
 
-function checkResult() {
-    
+function checkVictory() {
+    const boxes = document.getElementsByClassName('box');
+    const board = Array.from(boxes).map(box => box.textContent.trim());
+
+    const winCombinations = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+        [0, 4, 8], [2, 4, 6]              // Diagonals
+    ];
+
+    for (const combination of winCombinations) {
+        const [a, b, c] = combination;
+
+        if (board[a] === 'X' && board[b] === 'X' && board[c] === 'X') {
+            alert('PLAYER wins!');
+            resetGame();
+            return;
+        } else if (board[a] === 'O' && board[b] === 'O' && board[c] === 'O') {
+            alert('COMPUTER wins!');
+            resetGame();
+            return;
+        }
+    }
+
+    if (!board.includes('')) {
+        alert('It\'s a tie!');
+        resetGame();
+    }
+}
+
+function resetGame() {
+    window.location.reload(true);
 }
 
 
