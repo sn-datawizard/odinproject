@@ -1,3 +1,6 @@
 .DS_Store
 
 signupform/
+
+# Node modules
+restaurantwebpage/node_modules/
