@@ -4,3 +4,6 @@ signupform/
 
 # Node modules
 restaurantwebpage/node_modules/
+
+# dist directory
+restaurantwebpage/dist/
