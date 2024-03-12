@@ -1,13 +1,42 @@
+import * as menu from './menu.js';
+
 
 function main() {
+    initialize();
     createContent();
+    
+    menu.addEventSwitchPage();
+}
+
+function initialize() {
+    let body = document.body;
+    
+    let div = body.appendChild(document.createElement('div'));
+    div.setAttribute('class', 'nav-container');
+    
+    let nav = div.appendChild(document.createElement('nav'));
+    nav.setAttribute('class', 'navbar');
+
+    initializeButtons('Home', 'home-button');
+    initializeButtons('Menu', 'menu-button');
+
+    body.appendChild(document.createElement('div')).setAttribute('id', 'content');
+
+}
+
+function initializeButtons(text, id) {
+    let nav = document.getElementsByClassName('navbar')[0];
+    let button = nav.appendChild(document.createElement('button'));
+
+    button.setAttribute('id', id)
+    button.textContent = text;
 }
 
 function createContent() {
     createHeader();
     createWelcomeText();
     createOpeningHours();
-    createLocationText()
+    createLocationText();
 }
 
 function createHeader() {
@@ -55,7 +84,7 @@ function createOpeningHours() {
     ];
 
     for (var i = 0; i < schedule.length; i++) {
-        hourDiv = openingContainer.appendChild(document.createElement('div'));
+        let hourDiv = openingContainer.appendChild(document.createElement('div'));
         hourDiv.setAttribute('class', 'opening-hours');
         hourDiv.textContent = schedule[i];
     }
@@ -73,9 +102,9 @@ function createLocationText() {
 
 
 
-///////////////////////
-// Helper Functions //
-/////////////////////
+// ///////////////////////
+// // Helper Functions //
+// /////////////////////
 
 function createContentBlock(id, element, className, textContent) {
     const content = document.getElementById('content');
