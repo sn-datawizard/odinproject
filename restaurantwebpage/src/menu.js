@@ -5,7 +5,7 @@ export function addEventSwitchPage() {
 }
 
 export function initializeMenu() {
-    console.log('redirect');
+    console.log('menu page!');
     let content = document.getElementById('content');
     content.textContent = '';
 

@@ -1,5 +1,5 @@
 import * as menu from './menu.js';
-
+import './style.css';
 
 function main() {
     initialize();

@@ -15,7 +15,7 @@
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   addEventSwitchPage: () => (/* binding */ addEventSwitchPage),\n/* harmony export */   showMenu: () => (/* binding */ showMenu)\n/* harmony export */ });\n\nfunction addEventSwitchPage() {\n    var menuButton = document.getElementById('menu-button');\n    menuButton.addEventListener('click', function() {showMenu()});\n}\n\nfunction showMenu() {\n    console.log('redirect');\n\n}\n\n//# sourceURL=webpack:///./src/menu.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   addEventSwitchPage: () => (/* binding */ addEventSwitchPage),\n/* harmony export */   initializeMenu: () => (/* binding */ initializeMenu)\n/* harmony export */ });\n\nfunction addEventSwitchPage() {\n    var menuButton = document.getElementById('menu-button');\n    menuButton.addEventListener('click', function() {initializeMenu()});\n}\n\nfunction initializeMenu() {\n    console.log('redirect');\n    let content = document.getElementById('content');\n    content.textContent = '';\n\n}\n\n\n\n//# sourceURL=webpack:///./src/menu.js?");
 
 /***/ })
 
