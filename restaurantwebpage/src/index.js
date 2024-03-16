@@ -1,11 +1,15 @@
 import * as menu from './menu.js';
+import * as helper from './helper.js'
 import './style.css';
 
 function main() {
     initialize();
     createContent();
+    var homeButton = document.getElementById('home-button');
+    homeButton.addEventListener('click', initializeHome)
     
-    menu.addEventSwitchPage();
+    menu.addEventMenuPage();
+
 }
 
 function initialize() {
@@ -45,7 +49,7 @@ function createHeader() {
     var elementClass = 'header';
     var text = 'XYZ Korean Chicken'
 
-    createContentBlock(idContainer, element, elementClass, text);
+    helper.createContentBlock(idContainer, element, elementClass, text);
 }
 
 function createWelcomeText() {
@@ -58,7 +62,7 @@ function createWelcomeText() {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a purus a est faucibus sollicitudin. Vivamus non tellus eget arcu. ipsum. ' +
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a purus a est faucibus sollicitudin. Vivamus non tellus eget arcu. ipsum.'
 
-    createContentBlock(idContainer, element, elementClass, text);
+    helper.createContentBlock(idContainer, element, elementClass, text);
 }
 
 function createOpeningHours() {
@@ -66,7 +70,7 @@ function createOpeningHours() {
     var element = 'p';
     var elementClass = 'opening-text';
     
-    createContentBlock(idContainer, element, elementClass, null);
+    helper.createContentBlock(idContainer, element, elementClass, null);
 
 
     const openingContainer = document.getElementById('opening-container');
@@ -97,28 +101,16 @@ function createLocationText() {
     var elementClass = 'location-text';
     var text = '123 Forest Drive, Forestville, TX'
 
-    createContentBlock(idContainer, element, elementClass, text);
+    helper.createContentBlock(idContainer, element, elementClass, text);
 }
 
+function initializeHome() {
+    console.log('home page!');
+    let content = document.getElementById('content');
+    content.textContent = '';
 
-
-// ///////////////////////
-// // Helper Functions //
-// /////////////////////
-
-function createContentBlock(id, element, className, textContent) {
-    const content = document.getElementById('content');
-    const container = content.appendChild(document.createElement('div'));
-    container.setAttribute('id', id);
-    container.setAttribute('class', 'container')
-
-    const header = container.appendChild(document.createElement(element));
-    header.setAttribute('class', className);
-    header.textContent = textContent;
+    createContent();
 }
-
-
-
 
 
 
