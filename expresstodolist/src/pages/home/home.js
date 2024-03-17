@@ -1,4 +1,4 @@
-import * as helper from '/src/pages/utils/helper.js';
+import * as helper from '/src/utils/helper.js';
 
 function main() {
     addEventListenerButton();
