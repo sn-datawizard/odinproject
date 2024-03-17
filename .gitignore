@@ -4,6 +4,8 @@ signupform/
 
 # Node modules
 restaurantwebpage/node_modules/
+expresstodolist/node_modules/
 
 # dist directory
 restaurantwebpage/dist/
+expresstodolist/dist/
