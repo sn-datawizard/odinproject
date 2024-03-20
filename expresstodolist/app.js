@@ -8,6 +8,7 @@ const port = 3000
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 app.use('/src', express.static(path.join(__dirname, 'src')));
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.redirect('/home');
@@ -36,9 +37,11 @@ app.post('/signup', (req, res) => {
       const database = client.db('expresstodolist-database');
       const collection = database.collection('user_details');
 
+      const { user, password } = req.body;
+
       const doc = {
-        user: 'user1',
-        pwd: 'pwd1'
+        user: user,
+        pwd: password
       }
 
       const result = await collection.insertOne(doc);
