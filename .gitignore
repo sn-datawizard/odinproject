@@ -1,6 +1,6 @@
 .DS_Store
-
 signupform/
+.env
 
 # Node modules
 restaurantwebpage/node_modules/
