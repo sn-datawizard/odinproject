@@ -1,11 +1,18 @@
 import * as helper from '/src/utils/helper.js';
 
 function main() {
-    console.log('singup');
+    console.log('signup');
 
-    var button = document.getElementsByTagName('button')[0];
-    button.addEventListener('click', function() {submit()});
+    // You can remove the button click event listener
+    // var button = document.getElementsByTagName('button')[0];
+    // button.addEventListener('click', function() {submit()});
 
+    // Instead, handle the form's submit event
+    var signupForm = document.getElementById('signup-form');
+    signupForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        submit();
+    });
 }
 
 function submit() {
@@ -23,17 +30,14 @@ function submit() {
         } else {
             helper.redirectPage('/signup');
         }
-    })    
-    .catch(err => {
+    }).catch(err => {
         console.error('Error:', err);
     });
-
 }
 
 function getInput() {
     var emailInput = document.getElementById('email').value;
     var passwordInput = document.getElementById('password').value;
-    // var confirmPassword = document.getElementById('confirm-password').value;
 
     var formData = {
         user: emailInput,
@@ -41,9 +45,7 @@ function getInput() {
     };
     var jsonData = JSON.stringify(formData);
 
-    return jsonData
-
+    return jsonData;
 }
-
 
 main();
