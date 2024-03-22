@@ -41,7 +41,7 @@ app.post('/signup', async (req, res) => {
 
     const database = client.db('expresstodolist-database');
     const collection = database.collection('user_details');
-    collection.deleteMany({});
+    await collection.drop();
 
     const { user, password } = req.body;
 
@@ -52,11 +52,11 @@ app.post('/signup', async (req, res) => {
     
     const result = await collection.insertOne(doc);
     console.log(`A document was inserted with the _id: ${result.insertedId}`);
-    res.status(200).send('Success');
+    await res.sendStatus(200);
 
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal Server Error');
+    res.sendStatus(500)
   } finally {
     await client.close();
   }
@@ -85,12 +85,12 @@ app.post('/login', async (req, res) => {
       console.log('Logged in!');
       await client.close();
       
-      res.status(200).send('Success');
+      res.sendStatus(200);
     } else {
       console.log('Wrong credentials!');
       await client.close();
 
-      res.status(401).send('Failed');
+      res.sendStatus(401);
     } 
 
   } catch (error) {
