@@ -9,6 +9,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 app.use('/src', express.static(path.join(__dirname, 'src')));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.redirect('/home');
@@ -26,32 +27,76 @@ app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, 'src/pages/signup/signup.html'));
 });
 
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src/pages/dashboard/dashboard.html'));
+});
 
-app.post('/signup', (req, res) => {
 
+app.post('/signup', async (req, res) => {
   const uri = process.env.MONGO_CONX;
   const client = new MongoClient(uri);
 
-  async function run() {
-    try {
-      const database = client.db('expresstodolist-database');
-      const collection = database.collection('user_details');
+  try {
+    await client.connect();
 
-      const { user, password } = req.body;
+    const database = client.db('expresstodolist-database');
+    const collection = database.collection('user_details');
+    collection.deleteMany({});
 
-      const doc = {
-        user: user,
-        pwd: password
-      }
+    const { user, password } = req.body;
 
-      const result = await collection.insertOne(doc);
-      console.log(`A document was inserted with the _id: ${result.insertedId}`);
-
-    } finally {
-      await client.close();
+    const doc = {
+      user: user,
+      pwd: password
     }
+    
+    const result = await collection.insertOne(doc);
+    console.log(`A document was inserted with the _id: ${result.insertedId}`);
+    res.status(200).send('Success');
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  } finally {
+    await client.close();
   }
-  run().catch(console.dir);
+});
+
+
+
+app.post('/login', async (req, res) => {
+  
+  const uri = process.env.MONGO_CONX;
+  const client = new MongoClient(uri);
+
+  try {
+    const database = client.db('expresstodolist-database');
+    const collection = database.collection('user_details');
+
+    const { user, password } = req.body;
+
+    const doc = {
+      user: user,
+      pwd: password
+    }
+    
+    var loginData = await collection.findOne(doc);
+    if (loginData) {
+      console.log('Logged in!');
+      await client.close();
+      
+      res.status(200).send('Success');
+    } else {
+      console.log('Wrong credentials!');
+      await client.close();
+
+      res.status(401).send('Failed');
+    } 
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
 
 });
 
