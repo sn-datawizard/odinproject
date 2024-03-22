@@ -3,11 +3,6 @@ import * as helper from '/src/utils/helper.js';
 function main() {
     console.log('signup');
 
-    // You can remove the button click event listener
-    // var button = document.getElementsByTagName('button')[0];
-    // button.addEventListener('click', function() {submit()});
-
-    // Instead, handle the form's submit event
     var signupForm = document.getElementById('signup-form');
     signupForm.addEventListener('submit', function(event) {
         event.preventDefault();
