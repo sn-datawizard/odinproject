@@ -1,5 +1,11 @@
 .DS_Store
 signupform/
+admindashboard/
+etchasketch/
+libraryproject/
+restaurantwebpage/
+todolist/
+node_modules/
 .env
 
 # Node modules
