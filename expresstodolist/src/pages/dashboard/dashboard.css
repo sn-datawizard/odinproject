@@ -71,3 +71,28 @@ button {
     padding: 10px;
     margin-top: 5px;
 }
+
+.row-container {
+    display: flex;
+    justify-content: start;
+    margin-top: 10px;
+
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    border-image: linear-gradient(90deg, rgba(255,0,78,1) 1%, rgba(224,117,22,1) 21%, rgba(255,231,107,1)) 1;
+}
+
+.text-container {
+    display: flex;
+    justify-content: center;
+    
+    margin: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    
+    margin: 5px;
+}

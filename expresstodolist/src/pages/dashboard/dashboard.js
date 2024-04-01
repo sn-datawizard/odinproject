@@ -8,24 +8,29 @@ function main() {
 function addRow() {
     var content = document.getElementsByClassName('content')[0];
     var row = content.appendChild(document.createElement('div'));
-    row.setAttribute('class', 'row');
+    row.setAttribute('class', 'row-container');
 
-    addTask(row);
+    var txt = prompt('Task name');
+
+    addTask(row, txt);
 }
 
-function addTask(row) {
-    var task = row.appendChild(document.createElement('div'));
-    task.setAttribute('class', Math.random() * 10);
+function addTask(row, txt) {
+    var divText = row.appendChild(document.createElement('div'));
+    var text = divText.appendChild(document.createElement('h3'));
+    text.setAttribute('class', 'text-container')
+    text.textContent = txt;
 
-    var button = task.appendChild(document.createElement('button'));
+    var divButton = row.appendChild(document.createElement('div'));
+    var button = divButton.appendChild(document.createElement('button'));
+    button.setAttribute('class', 'button-container')
     button.textContent = 'DELETE';
-
-    button.addEventListener('click', function() {deleteTask(button)})
+    button.addEventListener('click', function() {deleteTask(button)});
 
 }
 
 function deleteTask(button) {
-    var parent = button.parentElement
+    var parent = button.parentNode.parentNode;
     parent.remove();
 }
 
