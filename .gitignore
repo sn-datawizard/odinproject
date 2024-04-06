@@ -17,3 +17,5 @@ weatherapp/node_modules/
 restaurantwebpage/dist/
 expresstodolist/dist/
 weatherapp/dist/
+
+weatherapp/src/utils/apikey.js
