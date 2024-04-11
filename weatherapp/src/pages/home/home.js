@@ -1,26 +1,40 @@
-import apiKey from '../../utils/apikey.js';
 
-function main() {
-    displayTemp();
+
+async function main() {
+    const fetch = await fetchData();
+
+    displayLocation(fetch);
+    displayTemp(fetch);
+    displayCondition(fetch);
 }
 
-async function displayTemp() {
-    const data = await fetchData(apiKey);
-    
-    const content = document.getElementsByClassName('content-condition')[0];
-    content.textContent = JSON.stringify(data['current']['condition']['text']);
+async function fetchData() {
+    try {
+        const response = await fetch('/data');
+        const data = await response.json();
 
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+};
+
+function displayLocation(i) {
     const contentCity = document.getElementsByClassName('content-city')[0];
-    contentCity.textContent = JSON.stringify(data['location']['name']);
-
-    const contentCelcius = document.getElementsByClassName('content-celcius')[0];
-    contentCelcius.textContent = JSON.stringify(data['current']['temp_c']);
+    //contentCity.textContent = JSON.stringify(i.location.name);
+    contentCity.textContent = 'Location: ' + i.location.name;  
 }
 
-async function fetchData(key) {
-    const response = await fetch('http://api.weatherapi.com/v1/current.json?key=' + key + '&q=London');
+function displayTemp(i) {
+    const contentCelcius = document.getElementsByClassName('content-celcius')[0];
+    contentCelcius.textContent = 'Temperature: ' + i.current.temp_c + '°C';
+    //contentCelcius.textContent = JSON.stringify(i.current.temp_c);
+}
 
-    return await response.json();
+function displayCondition(i) {
+    const content = document.getElementsByClassName('content-condition')[0];
+    content.textContent = 'Condition: ' + i.current.condition.text;
+    //content.textContent = JSON.stringify(i.current.condition.text);
 }
 
 
