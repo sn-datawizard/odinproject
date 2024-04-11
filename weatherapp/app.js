@@ -7,6 +7,7 @@ require('dotenv').config()
 const key = require('./src/utils/apikey.js');
 
 app.use('/src', express.static(path.join(__dirname, 'src')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', (req, res) => {
@@ -16,7 +17,7 @@ app.get('/', (req, res) => {
 
 app.get('/data', async (req, res) => {
     try {
-        const response = await fetch('http://api.weatherapi.com/v1/current.json?key=' + key + '&q=Munich');
+        const response = await fetch('http://api.weatherapi.com/v1/current.json?key=' + key + '&q=London');
         const data = await response.json();
 
         res.json(data);
