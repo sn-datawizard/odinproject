@@ -9,7 +9,7 @@
 <body>
     
     <div class="header-container">
-        <div class="header-header">
+        <div class="header-main">
             <div class="header-name">
                 <h1>WeatherApp</h1>
             </div>
@@ -21,10 +21,22 @@
         <div class="header-indicator"></div>
     </div>
 
-    <div class="content">
+    <div class="form-container">
+        <form id="form-city">
+            <label for="input-city">Enter City:</label>
+            <input type="text" id="input-city" name="city" required>
+            <button id="button-submit" type="button">SEARCH</button>
+        </form>
+    </div>
+
+    <div class="content-container">
         <div class="content-city"></div>
-        <div class="content-celcius"></div>
-        <div class="content-farenheit"></div>
+        
+        <div class="content-temperature">
+            <div class="content-celcius"></div>
+            <div class="content-farenheit"></div>
+        </div>
+        
         <div class="content-condition"></div>
     </div>
 
