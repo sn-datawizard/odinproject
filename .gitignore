@@ -15,7 +15,5 @@ weatherapp/node_modules/
 
 # dist directory
 restaurantwebpage/dist/
-expresstodolist/dist/
-weatherapp/dist/
 
 weatherapp/src/utils/apikey.js

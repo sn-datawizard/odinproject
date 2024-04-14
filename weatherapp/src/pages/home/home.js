@@ -4,6 +4,8 @@ async function main() {
     const api = await apiKey;
     const submitButton = document.getElementById('button-submit');
     submitButton.addEventListener('click', async function() {displayMeasures(api);});
+    submitButton.addEventListener('click', async function() {deleteIcon();});
+    //displayMeasures(api);
 }
 
 async function displayMeasures(api) {
@@ -18,6 +20,7 @@ async function displayMeasures(api) {
 async function fetchAPI(key) {
     const city = await getInput();
     const response = await fetch('http://api.weatherapi.com/v1/current.json?key=' + key + '&q=' + city, {mode: 'cors'})
+    //const response = await fetch('http://api.weatherapi.com/v1/current.json?key=' + key + '&q=London', {mode: 'cors'})
     const data = await response.json();
     return data;
 }
@@ -34,17 +37,17 @@ function displayLocation(i) {
 
 function displayTempC(i) {
     const contentCelcius = document.getElementsByClassName('content-celcius')[0];
-    contentCelcius.textContent = 'Temperature: ' + i.current.temp_c + '°C';
+    contentCelcius.textContent = 'Temperature °C: ' + i.current.temp_c + '°C';
 }
 
 function displayTempF(i) {
     const contentFarenheit = document.getElementsByClassName('content-farenheit')[0];
-    contentFarenheit.textContent = 'Temperature: ' + i.current.temp_f + '°F';
+    contentFarenheit.textContent = 'Temperature °F: ' + i.current.temp_f + '°F';
 }
 
 function displayCondition(i) {
-    const content = document.getElementsByClassName('content-condition')[0];
-    content.textContent = 'Condition: ' + i.current.condition.text;
+    //const content = document.getElementsByClassName('content-condition')[0];
+    //content.textContent = 'Condition: ' + i.current.condition.text;
 
     changeIcon(i.current.condition.text);
 }
@@ -78,6 +81,11 @@ function changeIcon(text) {
         imgElement.src = image; 
         imageContainer.appendChild(imgElement);
     }
+}
+
+function deleteIcon() {
+    const currentImage = document.getElementsByTagName('img')[0];
+    currentImage.remove();
 }
 
 
