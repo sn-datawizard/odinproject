@@ -1,0 +1,57 @@
+.content {
+  background-image: linear-gradient(to top, #25e236, #59db2d, #74d328, #87cc27, #96c42a);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  margin: 10px;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  margin-top: 10px;
+}
+
+.header-left-title {
+  margin-bottom: 25px;
+}
+
+span {
+  align-self: flex-end;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 50px;
+
+  margin-top: 50px;
+  margin: 25px;
+}
+
+img {
+  height: 10em;
+  width: 10em;
+
+  border: 5px outset #075E1C;
+  border-radius: 25px 25px 25px 24px;
+}
+
+img:hover {
+  transform: scale(1.10);
+}
+
+
+

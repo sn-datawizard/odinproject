@@ -7,11 +7,15 @@ restaurantwebpage/
 todolist/
 node_modules/
 .env
+react-test/
+react-cv-app/
+#react-memory-card-game
 
 # Node modules
 restaurantwebpage/node_modules/
 expresstodolist/node_modules/
 weatherapp/node_modules/
+react-cv-app/node_modules/
 
 # dist directory
 restaurantwebpage/dist/
